@@ -1,0 +1,31 @@
+---
+version: "2"
+services:
+  kubernetes:
+    image: kubernetes-launcher:latest
+    volumes:
+      - ./aws:/root/.aws
+      - ./ssh:/root/.ssh
+    user: root
+    environment:
+      HOME: /root
+      USER: root
+      AWS_DEFAULT_PROFILE: default
+      AWS_S3_REGION: us-east-1
+      POSTGRES_USER: coach
+      POSTGRES_PASSWORD: 123456
+      MASTER_SIZE: t2.micro
+      NODE_SIZE: t2.micro
+      NUM_NODES: 4
+      KUBE_AWS_ZONE: us-east-1a
+      INSTANCE_PREFIX: k8s
+      MASTER_DISK_TYPE: gp2
+      MASTER_DISK_SIZE: 20
+      MASTER_ROOT_DISK_TYPE: gp2
+      MASTER_ROOT_DISK_SIZE: 8
+      NODE_ROOT_DISK_TYPE: gp2
+      NODE_ROOT_DISK_SIZE: 20
+      ENABLE_CLUSTER_MONITORING: grafana
+      ENABLE_CLUSTER_LOGGING: 'true'
+      ELASTICSEARCH_LOGGING_REPLICAS: 3
+#      AWS_SSH_KEY:

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#SQUID_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' squid)
+#docker build --no-cache --build-arg http_proxy=http://$SQUID_IP:3128 -t kubernetes-launcher:latest .
+
+docker build --no-cache -t kubernetes-launcher:latest .
